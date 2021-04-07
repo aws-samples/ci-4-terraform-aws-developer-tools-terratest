@@ -12,12 +12,15 @@
     - [`/terraform/examples`](#terraformexamples)
     - [`/terraform/modules`](#terraformmodules)
 - [Guide](#guide)
+  - [Pre-requisites](#pre-requisites)
   - [1. Deploy CI Pipeline.](#1-deploy-ci-pipeline)
   - [2. Review and tune the test code](#2-review-and-tune-the-test-code)
   - [3. Push the code inside your new CodeCommit repository.](#3-push-the-code-inside-your-new-codecommit-repository)
   - [4. Clean Up](#4-clean-up)
   - [Troubleshooting](#troubleshooting)
-    - [error deleting S3 Bucket (BucketNotEmpty)](#error-deleting-s3-bucket-bucketnotempty)
+    - [Error deleting S3 Bucket (BucketNotEmpty)](#error-deleting-s3-bucket-bucketnotempty)
+  - [Security](#security)
+  - [License](#license)
 
 # Introduction
 
@@ -105,6 +108,16 @@ CodeBuild workflow:
 2. For each run the test reports can be accessed via AWS CodeBuild Console under `Reports` tab.
 
 # Guide
+
+## Pre-requisites
+
+The following pre-requisites are necessary in order to run the example.
+
+- [Terraform version >= 12](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [aws cli v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+- [python >= 3.8](https://www.python.org/downloads/)
+- [go >= 1.15.2](https://golang.org/doc/install)
+- [terratest](https://terratest.gruntwork.io/)
 
 ## 1. Deploy CI Pipeline.
 
