@@ -12,7 +12,7 @@
     - [`/terraform/examples`](#terraformexamples)
     - [`/terraform/modules`](#terraformmodules)
 - [Guide](#guide)
-  - [Pre-requisites](#pre-requisites)
+  - [Prerequisites](#prerequisites)
   - [1. Deploy CI Pipeline.](#1-deploy-ci-pipeline)
   - [2. Review and tune the test code](#2-review-and-tune-the-test-code)
   - [3. Push the code inside your new CodeCommit repository.](#3-push-the-code-inside-your-new-codecommit-repository)
@@ -109,9 +109,9 @@ CodeBuild workflow:
 
 # Guide
 
-## Pre-requisites
+## Prerequisites
 
-The following pre-requisites are necessary in order to run the example.
+The following prerequisites are necessary in order to run the example.
 
 - [Terraform version >= 12](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [aws cli v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
