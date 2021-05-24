@@ -2,7 +2,7 @@
 
 DELETE_ALL=${1}
 
-if ( [[ -z ${AWS_ACCESS_KEY_ID} ]] || [[ -z ${AWS_SECRET_ACCESS_KEY} ]] ) && [[ -z ${AWS_PROFILE} ]]; then
+if ([[ -z ${AWS_CONTAINER_AUTHORIZATION_TOKEN} ]] && (( [[ -z ${AWS_ACCESS_KEY_ID} ]] || [[ -z ${AWS_SECRET_ACCESS_KEY} ]] ) && [[ -z ${AWS_PROFILE} ]])); then
     echo "[ERROR] Missing AWS credentials variables"
     exit 1
 fi
