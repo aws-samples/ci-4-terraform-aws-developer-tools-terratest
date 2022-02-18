@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+mkdir ${BASE_PATH}/cicd/test/reports
 cd ${BASE_PATH}/cicd/test
 go mod init test
 
@@ -15,8 +16,7 @@ go get "github.com/gruntwork-io/terratest/modules/random"
 go get "github.com/gruntwork-io/terratest/modules/aws"
 
 
-mkdir ${BASE_PATH}/cicd/test/reports
-go test test -timeout 10m -v | tee ${BASE_PATH}/cicd/test/reports/test_output.log
+go test test -timeout 10m -v | tee reports/test_output.log
 retcode=${PIPESTATUS[0]}
 
 echo "Creating Logs"
