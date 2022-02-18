@@ -21,7 +21,7 @@ phases:
       - echo Starting pre-build...
       - ls -ls
       - ls -ls terraform/modules
-      - source ${BASE_PATH}/prebuild.sh
+      - source ./${BASE_PATH}/prebuild.sh
   build:
     commands:
       - ./${BASE_PATH}/test.sh
