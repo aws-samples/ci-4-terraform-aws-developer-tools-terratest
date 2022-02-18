@@ -20,6 +20,7 @@ phases:
       - export LC_ALL="en_US.utf8"
       - echo Starting pre-build...
       - ls -ls
+      - ls -ls terraform/modules
       - source ${BASE_PATH}/prebuild.sh
   build:
     commands:
