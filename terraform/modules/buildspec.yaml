@@ -11,7 +11,7 @@ env:
 phases:
   install:
     runtime-versions:
-      golang: 1.14
+      golang: 1.17.7
       python: 3.8
     commands:
       - ./${BASE_PATH}/install.sh
