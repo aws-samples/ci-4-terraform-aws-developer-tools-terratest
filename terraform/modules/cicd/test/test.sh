@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-mkdir ${BASE_PATH}/cicd/test/reports
+mkdir ${BASE_PATH}/cicd/test/reports && touch ${BASE_PATH}/cicd/test/reports/test_output.log
 cd ${BASE_PATH}/cicd/test
 go mod init test
 
