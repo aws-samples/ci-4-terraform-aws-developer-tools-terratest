@@ -12,7 +12,9 @@ go get "github.com/gruntwork-io/terratest/modules/random"
 go get "github.com/gruntwork-io/terratest/modules/aws"
 
 mkdir ${BASE_PATH}/cicd/test/reports
-go test ${BASE_PATH}/cicd/test/cicd_test.go -timeout 10m -v | tee ${BASE_PATH}/cicd/test/reports/test_output.log
+cd ${BASE_PATH}/cicd/test/test
+go mod init test
+go test test -timeout 10m -v | tee ${BASE_PATH}/cicd/test/reports/test_output.log
 retcode=${PIPESTATUS[0]}
 
 echo "Creating Logs"
