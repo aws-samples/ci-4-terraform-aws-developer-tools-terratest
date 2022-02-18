@@ -16,7 +16,7 @@ resource "aws_codebuild_project" "codebuild_deployment" {
   }
 
   environment {
-    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
+    image                       = "aws/codebuild/standard:5.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = var.cb_priviledged_mode
