@@ -23,7 +23,7 @@ phases:
       - source ${BASE_PATH}/prebuild.sh
   build:
     commands:
-      - ./${BASE_PATH}/test/test.sh
+      - ./${BASE_PATH}/test.sh
   post_build:
     commands:
       - echo Test Performed completed on `date`
