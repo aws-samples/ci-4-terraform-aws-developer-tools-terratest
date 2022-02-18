@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+go env -w GOPROXY=direct
+
+cd ${BASE_PATH}/cicd/test
+go mod init test
+
 # Run terratest
 echo "Running Terratest"
 go get "github.com/gruntwork-io/terratest/modules/terraform"
@@ -11,9 +16,8 @@ go get "fmt"
 go get "github.com/gruntwork-io/terratest/modules/random"
 go get "github.com/gruntwork-io/terratest/modules/aws"
 
+
 mkdir ${BASE_PATH}/cicd/test/reports
-cd ${BASE_PATH}/cicd/test/test
-go mod init test
 go test test -timeout 10m -v | tee ${BASE_PATH}/cicd/test/reports/test_output.log
 retcode=${PIPESTATUS[0]}
 
