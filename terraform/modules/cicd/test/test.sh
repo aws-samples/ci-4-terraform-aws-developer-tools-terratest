@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-go env -w GOPROXY=direct
-
 cd ${BASE_PATH}/cicd/test
 go mod init test
 
