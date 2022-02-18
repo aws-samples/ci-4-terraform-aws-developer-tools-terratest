@@ -3,13 +3,13 @@ set -e
 
 # Run terratest
 echo "Running Terratest"
-go get "github.com/gruntwork-io/terratest/modules/terraform" \
-   "github.com/stretchr/testify/assert" \
-   "strings" \
-   "testing" \
-   "fmt" \
-   "github.com/gruntwork-io/terratest/modules/random" \
-   "github.com/gruntwork-io/terratest/modules/aws"
+go get "github.com/gruntwork-io/terratest/modules/terraform"
+go get "github.com/stretchr/testify/assert"
+go get "strings"
+go get "testing"
+go get "fmt"
+go get "github.com/gruntwork-io/terratest/modules/random"
+go get "github.com/gruntwork-io/terratest/modules/aws"
 
 mkdir ${BASE_PATH}/cicd/test/reports
 go test ${BASE_PATH}/cicd/test/cicd_test.go -timeout 10m -v | tee ${BASE_PATH}/cicd/test/reports/test_output.log
