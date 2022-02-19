@@ -153,32 +153,23 @@ A complete guide can be found in the [README.md](./terraform/modules/cicd/README
 
 For this test you can push the same code you are using right now.
 
-1. This first step is optional, but it is recommended: create a `.gitignore` file in the root level of the repository
-    to avoid git tracking Terraform state files.
-
-    ```sh
-    echo "*.tfstate*
-    .terraform
-    plan.out" >> .gitignore
-    ```
-
-2. Retrieve repository remote address:
+1. Retrieve repository remote address:
     1. on the AWS console got in `CodeCommit`
     2. click on your repository name
     3. Click on `Clone URL` and select your preferred way (I would suggest `HTTPS (GRC)`).
        Documentation about how to set up it can be found by clicking on `connection steps`.
 
-3. Setup your git repo:
+2. Setup your git repo:
 
     ```sh
     git remote add origin <THE_URL_YOU_GOT_ON_STEP2>
     ## By default the CodePipeline monitors the dev branch
     git checkout -b dev
-    git push --set-upstream origin
+    git push --set-upstream origin dev
     ```
 
-4. Push the repo against the **dev** branch this will trigger the start of the Pipeline
-5. Follow the Pipeline Run connecting to the `CodePipeline` console.
+3. Push the repo against the **dev** branch this will trigger the start of the Pipeline
+4. Follow the Pipeline Run connecting to the `CodePipeline` console.
 
 ## 4. Clean Up
 
