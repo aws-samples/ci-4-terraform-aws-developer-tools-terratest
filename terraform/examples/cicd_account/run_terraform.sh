@@ -1,6 +1,25 @@
-#/bin/bash
+#!/bin/bash
 
-DELETE_ALL=${1}
+CLEAN_UP="No"
+
+while getopts ":dh" opt; do
+  case ${opt} in
+    h )
+        echo "Usage:"
+        echo "    ./run_terraform             Deploy Terraform resources."
+        echo "    ./run_terraform -d          Destroy deployed resources."
+        exit 0
+        ;; 
+    d ) # process option t
+        echo "Destroy the current deployed resources"
+        CLEAN_UP="Yes"
+      ;;
+    \? ) echo "Usage: ./run_terraform [-h] [-d]"
+      ;;
+  esac
+done
+
+
 
 if ( [[ -z ${AWS_ACCESS_KEY_ID} ]] || [[ -z ${AWS_SECRET_ACCESS_KEY} ]] ) && [[ -z ${AWS_PROFILE} ]]; then
     echo "[ERROR] Missing AWS credentials variables"
@@ -18,18 +37,12 @@ if [[  $retcode != 0 ]]; then
     exit $retcode
 fi
 
-if [[ -z ${DELETE_ALL} ]]; then
-    continue 
-elif [[ ${DELETE_ALL} == "destroy" ]]; then
+if [[ ${CLEAN_UP} == "Yes" ]]; then
     terraform output | grep -i S3_bucket
     read -p "Confirm that you have empty the S3 bucket"
     echo "[INFO] destroy all"
     terraform destroy -var-file ${TFVARS_FILE}
     exit 0
-else 
-    echo "[ERROR] Value not recognised"
-    echo "[ERROR] ./run_terraform.sh [destroy]"
-    exit 1
 fi
 
 echo "terraform plan -var-file ${TFVARS_FILE} -out plan.out"

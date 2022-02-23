@@ -1,0 +1,10 @@
+branch: master
+download-external-modules: false
+evaluate-variables: true
+external-modules-download-path: .external_modules
+framework: terraform
+# skip-path:
+output: cli
+skip-check:
+  - CKV_AWS_144 # Ensure S3 bucket has cross-region replication enabled
+  - CKV_AWS_18 # "Ensure the S3 bucket has access logging enabled"

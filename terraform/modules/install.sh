@@ -12,7 +12,7 @@ curl -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip https://releases.hashicor
 unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && mv terraform /usr/bin
 terraform --version
 echo "Installing Terratest Log Parser"
-curl --location --silent --fail --show-error -o terratest_log_parser https://github.com/gruntwork-io/terratest/releases/download/v0.13.13/terratest_log_parser_linux_amd64
+curl --location --silent --fail --show-error -o terratest_log_parser https://github.com/gruntwork-io/terratest/releases/download/${TERRATEST_VERSION}/terratest_log_parser_linux_amd64
 chmod +x terratest_log_parser
 mv terratest_log_parser /usr/local/bin
 terratest_log_parser --version

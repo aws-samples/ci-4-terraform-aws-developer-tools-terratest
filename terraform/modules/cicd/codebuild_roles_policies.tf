@@ -27,6 +27,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
       codepipeline_artifact_bucket = aws_s3_bucket.codepipeline_bucket.arn
       priv_vpc_id                  = var.priv_vpc_config["vpc_id"]
       account_id                   = var.account_id
+      codebuild_kms_key            = aws_kms_key.codebuild-key.arn
   })
 }
 

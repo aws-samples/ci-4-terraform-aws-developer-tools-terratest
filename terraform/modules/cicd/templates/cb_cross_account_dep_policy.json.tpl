@@ -49,6 +49,17 @@
       "Action": [
         "s3:*"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Resource": "${codebuild_kms_key}",
+      "Action": [
+        "kms:Decrypt",
+        "kms:DescribeKey",
+        "kms:Encrypt",
+        "kms:GenerateDataKey*",
+        "kms:ReEncrypt*"
+      ]
     }
   ]
 }

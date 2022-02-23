@@ -96,3 +96,9 @@ variable "priv_vpc_config" {
     security_group_ids = ""
   }
 }
+
+variable "codebuild_image" {
+  description = "CodeBuild image"
+  type = string
+  default = "aws/codebuild/standard:5.0"
+}
