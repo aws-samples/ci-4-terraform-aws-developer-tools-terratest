@@ -132,7 +132,7 @@ To deploy the CI follow the these steps:
 3. Deploy the resources:
 
     ```sh
-    cd terraform/examples
+    cd terraform/examples/cicd_account
     ./run_terraform.sh
     ```
 
