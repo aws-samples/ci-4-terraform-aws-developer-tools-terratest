@@ -39,7 +39,7 @@ resource "aws_iam_role_policy_attachment" "codebuild_codecommit" {
 resource "aws_iam_role_policy_attachment" "codebuild_deploy" {
   count      = var.roles == tolist([]) ? 1 : 0
   role       = aws_iam_role.codebuild_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess"
 }
 
 resource "aws_iam_role_policy" "codebuild_deploy_policy" {

@@ -6,11 +6,15 @@
       "Action": [
         "iam:CreateRole",
         "iam:GetRole",
+        "iam:GetRolePolicy",
         "iam:TagRole",
         "iam:List*",
         "iam:AttachRolePolicy",
         "iam:DetachRolePolicy",
-        "iam:DeleteRole"
+        "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
+        "iam:PassRole",
+        "iam:PutRolePolicy"
       ],
       "Resource": "arn:aws:iam::${account_id}:role/*"
     },
@@ -22,6 +26,13 @@
         "codecommit:DeleteRepository"
       ],
       "Resource": "arn:aws:codecommit:${region}:${account_id}:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codebuild:DeleteProject"
+      ],
+      "Resource": "arn:aws:codebuild:${region}:${account_id}:project/*"
     },
     {
       "Effect": "Allow",
@@ -43,7 +54,7 @@
         "s3:CreateBucket",
         "s3:List*",
         "s3:Get*",
-        "s3:PutBucketTagging",
+        "s3:Put*",
         "s3:DeleteBucket"
       ],
       "Resource": "*"
