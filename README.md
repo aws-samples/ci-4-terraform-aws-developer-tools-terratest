@@ -113,11 +113,11 @@ CodeBuild workflow:
 
 The following prerequisites are necessary in order to run the example.
 
-- [Terraform version >= 12](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [Terraform version >= 1.3.0](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [aws cli v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-- [python >= 3.8](https://www.python.org/downloads/)
-- [go >= 1.15.2](https://golang.org/doc/install)
-- [terratest](https://terratest.gruntwork.io/)
+- [python >= 3.10](https://www.python.org/downloads/)
+- [go >= 1.19.1](https://golang.org/doc/install)
+- [terratest >= 0.41.11](https://terratest.gruntwork.io/)
 
 ## 1. Deploy CI Pipeline.
 
@@ -174,6 +174,7 @@ For this test you can push the same code you are using right now.
     git remote add origin <THE_URL_YOU_GOT_ON_STEP2>
     ## By default the CodePipeline monitors the dev branch
     git checkout -b dev
+   ## Add files and commit. Finally push to repository using the command:
     git push --set-upstream origin dev
     ```
 

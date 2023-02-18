@@ -1,5 +1,5 @@
 resource "aws_codecommit_approval_rule_template" "code_repo_approval_rule_template" {
-  name        = "MyApprovalRuleTemplate"
+  name        = "CICDApprovalRuleTemplate"
   description = "This is an approval rule template"
 
   content = <<EOF

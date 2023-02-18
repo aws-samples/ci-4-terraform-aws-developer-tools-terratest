@@ -30,6 +30,16 @@
     {
       "Effect": "Allow",
       "Action": [
+        "codecommit:CreateApprovalRuleTemplate",
+        "codecommit:AssociateApprovalRuleTemplateWithRepository",
+        "codecommit:DeleteApprovalRuleTemplate",
+        "codecommit:DisassociateApprovalRuleTemplateFromRepository"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
         "codebuild:DeleteProject"
       ],
       "Resource": "arn:aws:codebuild:${region}:${account_id}:project/*"
