@@ -115,8 +115,8 @@ The following prerequisites are necessary in order to run the example.
 
 - [Terraform version >= 1.3.0](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [aws cli v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-- [python >= 3.10](https://www.python.org/downloads/)
-- [go >= 1.19.1](https://golang.org/doc/install)
+- [python >= 3.9](https://www.python.org/downloads/)
+- [go >= 1.16](https://golang.org/doc/install)
 - [terratest >= 0.41.11](https://terratest.gruntwork.io/)
 
 ## 1. Deploy CI Pipeline.
