@@ -27,7 +27,7 @@ resource "aws_codebuild_project" "codebuild_deployment" {
       for_each = var.proxy_config["HTTP_PROXY"] != "" ? var.proxy_config : {}
       content {
         name  = environment_variable.key
-        value = environment_variable.value #export HTTP_PROXY=http://proxy.ccc-ng-1.eu-west-1.aws.cloud.bmw:8080
+        value = environment_variable.value
       }
     }
   }

@@ -24,6 +24,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 
   policy = templatefile("${path.module}/templates/codepipeline-role-policy.json.tpl", {
     codepipeline_bucket_arn = aws_s3_bucket.codepipeline_bucket.arn
+    kms_key_arn = aws_kms_key.codebuild-key.arn
   })
 
 }

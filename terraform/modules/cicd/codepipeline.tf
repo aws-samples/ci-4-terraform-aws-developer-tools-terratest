@@ -1,8 +1,30 @@
+resource "aws_codecommit_approval_rule_template" "code_repo_approval_rule_template" {
+  name        = "CICDApprovalRuleTemplate"
+  description = "This is an approval rule template"
+
+  content = <<EOF
+{
+    "Version": "2018-11-08",
+    "DestinationReferences": ["refs/heads/master"],
+    "Statements": [{
+        "Type": "Approvers",
+        "NumberOfApprovalsNeeded": 2,
+        "ApprovalPoolMembers": ["arn:aws:sts::${var.account_id}:assumed-role/CodeCommitReview/*"]
+    }]
+}
+EOF
+}
+
 resource "aws_codecommit_repository" "code_repo" {
   repository_name = var.git_repository_name
   description     = "Code Repository"
 
   tags = var.custom_tags
+}
+
+resource "aws_codecommit_approval_rule_template_association" "example" {
+  approval_rule_template_name = aws_codecommit_approval_rule_template.code_repo_approval_rule_template.name
+  repository_name             = aws_codecommit_repository.code_repo.repository_name
 }
 
 resource "aws_codepipeline" "codepipeline" {
@@ -13,7 +35,14 @@ resource "aws_codepipeline" "codepipeline" {
   artifact_store {
     location = aws_s3_bucket.codepipeline_bucket.bucket
     type     = "S3"
+
+    encryption_key {
+      id   = aws_kms_key.codebuild-key.arn
+      type = "KMS"
+    }
   }
+
+
 
   stage {
     name = "Source"

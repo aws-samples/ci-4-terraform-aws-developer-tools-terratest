@@ -14,6 +14,19 @@
       ]
     },
     {
+      "Effect":"Allow",
+      "Action": [
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey",
+        "kms:Decrypt",
+        "kms:Encrypt"
+      ],
+      "Resource": [
+        "${kms_key_arn}"
+      ]
+    },
+    {
       "Effect": "Allow",
       "Action": [
         "codebuild:BatchGetBuilds",

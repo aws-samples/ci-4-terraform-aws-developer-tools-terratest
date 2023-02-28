@@ -18,7 +18,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "codebuild_policy" {
-  name = "${var.git_repository_name}_codebuild_deployment_policy"
+  name = "${var.git_repository_name}_codebuild_cross_account_deployment_policy"
   role = aws_iam_role.codebuild_role.name
 
   policy = templatefile("${path.module}/templates/cb_cross_account_dep_policy.json.tpl",
@@ -39,5 +39,16 @@ resource "aws_iam_role_policy_attachment" "codebuild_codecommit" {
 resource "aws_iam_role_policy_attachment" "codebuild_deploy" {
   count      = var.roles == tolist([]) ? 1 : 0
   role       = aws_iam_role.codebuild_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess"
+}
+
+resource "aws_iam_role_policy" "codebuild_deploy_policy" {
+  name = "${var.git_repository_name}_codebuild_deployment_policy"
+  role = aws_iam_role.codebuild_role.name
+
+  policy = templatefile("${path.module}/templates/codebuild-role-policy.json.tpl",
+    {
+      account_id                   = var.account_id
+      region                       = var.region
+    })
 }

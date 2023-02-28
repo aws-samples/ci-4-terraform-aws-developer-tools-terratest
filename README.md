@@ -113,11 +113,11 @@ CodeBuild workflow:
 
 The following prerequisites are necessary in order to run the example.
 
-- [Terraform version >= 12](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [Terraform version >= 1.3.0](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [aws cli v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-- [python >= 3.8](https://www.python.org/downloads/)
-- [go >= 1.15.2](https://golang.org/doc/install)
-- [terratest](https://terratest.gruntwork.io/)
+- [python >= 3.9](https://www.python.org/downloads/)
+- [go >= 1.16](https://golang.org/doc/install)
+- [terratest >= 0.41.11](https://terratest.gruntwork.io/)
 
 ## 1. Deploy CI Pipeline.
 
@@ -132,7 +132,7 @@ To deploy the CI follow the these steps:
 3. Deploy the resources:
 
     ```sh
-    cd terraform/examples
+    cd terraform/examples/cicd_account
     ./run_terraform.sh
     ```
 
@@ -174,7 +174,8 @@ For this test you can push the same code you are using right now.
     git remote add origin <THE_URL_YOU_GOT_ON_STEP2>
     ## By default the CodePipeline monitors the dev branch
     git checkout -b dev
-    git push --set-upstream origin
+   ## Add files and commit. Finally push to repository using the command:
+    git push --set-upstream origin dev
     ```
 
 4. Push the repo against the **dev** branch this will trigger the start of the Pipeline
@@ -187,8 +188,8 @@ When you finished, in order to do not incur in extra costs, you should clean up 
 You can do that by running:
 
 ```sh
-cd terraform/examples
-./run_terraform.sh delete
+cd terraform/examples/cicd_account
+./run_terraform.sh -d
 ```
 
 The procedure will stop asking for confirming to have removed every object from the S3 bucket.
