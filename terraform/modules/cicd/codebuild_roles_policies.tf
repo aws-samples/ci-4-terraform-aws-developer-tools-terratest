@@ -26,7 +26,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
       roles                        = var.roles
       codepipeline_artifact_bucket = aws_s3_bucket.codepipeline_bucket.arn
       priv_vpc_id                  = var.priv_vpc_config["vpc_id"]
-      account_id                   = var.account_id
+      account_id                   = local.account_id
       codebuild_kms_key            = aws_kms_key.codebuild-key.arn
   })
 }
@@ -48,7 +48,7 @@ resource "aws_iam_role_policy" "codebuild_deploy_policy" {
 
   policy = templatefile("${path.module}/templates/codebuild-role-policy.json.tpl",
     {
-      account_id                   = var.account_id
-      region                       = var.region
+      account_id                   = local.account_id
+      region                       = local.region
     })
 }

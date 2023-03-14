@@ -35,6 +35,10 @@ func TestBitBucketIntegration(t *testing.T) {
 			"account_type":                    "Terratest",
 			"branches":                        []string{"dev"},
 		},
+
+		EnvVars: map[string]string{
+			"AWS_REGION": awsRegion,
+		},
 	}
 
 	// Clean up resources with "terraform destroy" at the end of the test.
